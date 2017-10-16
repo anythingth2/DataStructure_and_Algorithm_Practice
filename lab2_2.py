@@ -1,4 +1,5 @@
-order = str(input('Enter : '))
+# order = str(input('Enter : '))
+order = "{}"
 
 LEFT_BRACKET = ('[','{','(')
 RIGHT_BRACKET = (']','}',')')
@@ -25,7 +26,7 @@ for char in order:
             bracket = left_bracket_stack.pop()
             if match(bracket,char):
                 pass
-            else:                
+            else:
                 err = True
                 break
 
@@ -37,3 +38,19 @@ if err:
 else:
     print('MATCH')
 
+
+def matcher2(expression):
+    tmp = []
+    pList =  ['(', '[', '{', ')', ']', "}"]
+    pureP = ''.join([i for i in expression if i in pList])
+    for c in pureP:
+        if(pList.index(c) < 3):
+            tmp.append(c)
+        elif pList[pList.index(c)-3] == tmp[-1]:
+            tmp.pop()
+        else:
+            return False
+    return tmp == []
+
+def matcher2List(expressionList):
+    return [matcher2(expression) for expression in expressionList]

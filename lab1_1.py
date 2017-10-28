@@ -5,4 +5,6 @@ def factorial(n):
     return num
     raise NotImplementedError()
 
-print(factorial(9))
+factorial2 = lambda x: x * factorial2(x - 1) if x else 1
+
+# print(factorial(9))
